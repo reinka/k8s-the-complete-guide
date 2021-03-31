@@ -1,4 +1,4 @@
-apiVersion: networking.k8s.io/v1
+apiVersion: networking.k8s.io/v1beta1
 # UPDATE THE API
 kind: Ingress
 metadata:
@@ -17,15 +17,11 @@ spec:
             path: /?(.*)
           # UPDATE THIS LINE ABOVE
             backend:
-              service: 
-                name: client-cluster-ip-service
-                port:
-                  number: 3000
+              serviceName: client-cluster-ip-service
+              portNumber: 3000
           - pathType: Prefix
             path: /api/?(.*)
           # UPDATE THIS LINE ABOVE
             backend:
-              service: 
-                name: server-cluster-ip-service
-                port:
-                  number: 5000
+              serviceName: server-cluster-ip-service
+              portNumber: 5000
